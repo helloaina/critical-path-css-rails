@@ -22,7 +22,7 @@ module CriticalPathCss
         config['css_paths'] = [config['css_path']] if config['css_path']
 
         unless config['css_paths']
-          config['css_paths'] = [ActionController::Base.helpers.stylesheet_path(config['manifest_name'], host: '')]
+          config['css_paths'] = Array.new(config['routes'].size, ActionController::Base.helpers.stylesheet_path(config['manifest_name'], host: ''))
         end
         config['css_paths'].map! { |path| format_path(path) }
       end
